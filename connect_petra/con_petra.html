@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body style="text-align: center;">
+
+
+
+    <form method="POST" action="http://127.0.0.1:8081/mint">
+        <h1>NFT Token</h1>
+
+        <input type="button" onclick="getAptosWallet()" name="connect" value="connect">
+        <input type="button" onclick="disAptosWallet()" name="disconnect" value="disconnect"><br /><br />
+        collectionName:<input type="text" id="user[Collection]"><br /><br />
+        tokenName:<input type="text" id="user[Token]"><br /><br />
+        description:<input type="text" id="user[Description]"><br /><br />
+        Supply:<input type="text" id="user[Supply]"><br /><br />
+        Icon:<input type="text" id="user[Icon]"><br /><br />
+        <input type="button" onclick="mint()" value="Mint">
+
+    </form>
+
+    <!-- <input type="button" value="test mint" onclick="mint()"> -->
+    </table>
+    <script src="https://unpkg.com/aptos@latest/dist/index.global.js" ></script>
+    <script>
+
+    async function mint() {
+            
+    const account = window.aptos.account();
+    const payload  = {
+        type:"entry_function_payload",
+        function:"0x3::token::create_token_script",
+        
+        type_arguments :[],
+        arguments:
+        [
+            document.getElementById("user[Collection]").value,
+            document.getElementById("user[Token]").value,
+            document.getElementById("user[Description]").value,
+            document.getElementById("user[Supply]").value,
+            "18446744073709551615",
+            document.getElementById("user[Icon]").value,
+            "0xead6e178f79cd6e876bba2a4c0bd7e46b0922b37bd4652e9bdf3e357d90cd372",
+            "0",
+            "0",
+            [
+                false,
+                false,  
+                false,
+                false,
+                false
+            ],
+            [],
+            [],
+            []
+        ]
+        }
+
+    try {
+        const pendingTransaction = await window.aptos.signAndSubmitTransaction(payload);
+
+        // In most cases a dApp will want to wait for the transaction, in these cases you can use the typescript sdk
+        const client = new window.aptosSDK.AptosClient('https://devnet.aptoslabs.com');
+        const txn = await client.waitForTransactionWithResult(
+            pendingTransaction.hash,
+        );
+        } catch (error) {
+        // see "Errors"
+        }
+    }
+        
+
+
+        async function getAptosWallet() {
+            if ('aptos' in window) {
+                await window.aptos.connect();
+            } else {
+                window.open('https://petra.app/', `_blank`);
+            }
+        };
+
+        async function disAptosWallet() {
+            if ('aptos' in window) {
+                await window.aptos.disconnect();
+            }
+        };
+
+
+    </script>
+
+</body>
+
+</html>

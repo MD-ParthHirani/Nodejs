@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <title>Bootstrap Example</title>
+   
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+ 
+    <body style="text-align: center;">
+    
+        <style>
+        
+        .gradient-custom {
+          
+       
+          background: #bd4b43;
+          
+        
+          background: -webkit-linear-gradient(to right, rgb(209, 183, 81), rgb(86, 221, 147));
+
+
+          background: linear-gradient(to right, rgb(150, 175, 69), rgb(239, 93, 67))
+        }</style>
+        <section class="vh-100 gradient-custom " >
+         
+          <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                  <div class="card-body p-5 text-center">
+        
+                    <div class="mb-md-5 mt-md-4 pb-5">
+        
+                      <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                      <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                      <form  action="http://localhost:8081/login" method="POST">
+                      <div class="form-outline form-white mb-4">
+                        <label class="form-label" for="typeEmailX">Email</label>
+                        <input type="email" name="email" class="form-control mb-2 mr-sm-2" >
+                       
+                      </div></br>
+        
+                      <div class="form-outline form-white mb-4">
+                        <label class="form-label" for="typePasswordX" >Password</label>
+                        <input type="password" name="pswd" class="form-control mb-2 mr-sm-2"   required>
+                        
+                      </div></br></br>
+                      <input type="submit" value="LOGOUT" class="btn btn-outline-light btn-lg px-5" onclick="isLoggedIn()">
+                      <!-- <input type="button" value="LOGIN" ><div style="text-align:center;"> -->
+                        <!-- <a href="http://localhost:8081/proposal.html"><div style="float:center"><button class="btn btn-outline-light btn-lg px-5" style="color:rgb(76, 0, 255);">login</button></div></a></div>
+                       -->
+                    
+                     
+        
+                    </div></br>
+        
+                    <div>
+                      <p class="mb-0">Don't have an account? <a href="http://localhost:8081/signup.htm"  class="text-white-50 fw-bold" style="color:blue;">Sign Up</a>
+                      </p>
+                        <a href="http://localhost:8081/proposal.html"  class="text-white-50 fw-bold"  style="color:blue;">Candidate Vote</a>
+                      </p>
+                     
+        
+                    </div>
+        
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        </section>
+       <script>
+        async function isLoggedIn() {
+    if (window.aptos.isAuthenticated()) return next();
+    window.aptos.redirect("/login.htm");
+
+   
+}
+       </script>
+    </body>
+</html>

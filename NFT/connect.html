@@ -1,0 +1,83 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    
+</head>
+<body style="text-align: center;">
+
+   
+    
+    <form method="POST" action="http://127.0.0.1:8081/mint">
+        <h1>NFT Token</h1>
+        Address:<input type="text" name="user[Address]"><br /><br />
+        publicKey:<input type="text" name="user[Publickey]"><br /><br />
+        privateKey:<input type="text" name="user[Privatekey]"><br /><br />
+        <input type="submit" name="Mint" value="Mint">
+        <input type="button" onclick="getAptosWallet()" name="connect" value="connect">
+    </form>
+</table>
+    <script>
+        async function getAptosWallet () {
+            if ('aptos' in window) {
+                await window.aptos.connect();
+            } else {
+                window.open('https://petra.app/', `_blank`);
+            }
+        };
+       
+        
+    </script>
+    
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    
+</head>
+<body style="text-align: center;">
+
+   
+    
+    <form method="POST" action="http://127.0.0.1:8081/mint">
+        <h1>NFT Token</h1>
+        Address:<input type="text" name="user[Address]"><br /><br />
+        publicKey:<input type="text" name="user[Publickey]"><br /><br />
+        privateKey:<input type="text" name="user[Privatekey]"><br /><br />
+        collectionName:<input type="text" name="user[Collection]"><br /><br />
+        tokenName:<input type="text" name="user[Token]"><br /><br />
+        description:<input type="text" name="user[Description]"><br /><br />
+        Supply:<input type="text" name="user[Supply]"><br /><br />
+        Icon:<input type="text" name="user[Icon]"><br /><br />
+        <input type="submit" name="Mint" value="Mint">
+        <input type="button" onclick="getAptosWallet()" name="connect" value="connect">
+    </form>
+</table>
+    <script>
+        async function getAptosWallet () {
+            if ('aptos' in window) {
+                await window.aptos.connect();
+            } else {
+                window.open('https://petra.app/', `_blank`);
+            }
+        };
+       
+        
+    </script>
+    
+</body>
+</html> 
+

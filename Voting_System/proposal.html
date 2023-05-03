@@ -1,0 +1,272 @@
+<html>
+
+<head>
+  <title>Bootstrap Example</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body style="text-align: center;">
+
+  <style>
+    .gradient-custom {
+
+
+      background: #bd4b43;
+
+      text-align: center;
+      background: -webkit-linear-gradient(to right, rgb(209, 183, 81), rgb(86, 221, 147));
+
+
+      background: linear-gradient(to right, rgb(150, 175, 69), rgb(239, 93, 67))
+    }
+  </style>
+  <section class="vh-100 gradient-custom ">
+
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-50 col-md-20 col-lg-50 col-xl-25">
+          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+
+              <div class="mb-md-2 mt-md-3 pb-4"></br>
+                
+                  <div>
+                  <a href="http://localhost:8081/login.htm"><div style="float:left"><button class="btn btn-outline-light px-0" style="color:rgb(255, 0, 0);">Logout</button></div></a></div>
+              <br><div style="text-align:center;">
+                
+                <h2 class="fw-bold mb-5 text-uppercase"> Candidate Vote </h2><br></div>
+                <div style="text-align: right;">
+                  <input type="button" value="wallet connect" onclick="getAptosWallet()"
+                    class="btn btn-outline-light px-0" style="color:blue;">
+                  <input type="button" value="wallet disconnect" onclick="disAptosWallet()"
+                    class="btn btn-outline-light  px-0" style="color:crimson;"><br /><br /><br>
+
+
+                </div>
+
+                <div>
+                  <p class="mb-0">create your own proposal? <a href="http://localhost:8081/cre_pro.html"
+                      class="text-white-50 fw-bold" style="color:blue;">Create Proposal</a></br></br>
+                      
+                      
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </form>
+      <script>
+        async function getAptosWallet() {
+          if ('aptos' in window) {
+            await window.aptos.connect();
+          } else {
+            window.open('https://petra.app/', `_blank`);
+          }
+        };
+
+        async function disAptosWallet() {
+          if ('aptos' in window) {
+            await window.aptos.disconnect();
+          }
+        };
+      </script>
+  </section>
+
+</body>
+
+</html>
+</br>
+<html>
+
+<head>
+  <title>Bootstrap Example</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body style="text-align: center;">
+
+  <style>
+    .gradient-custom {
+
+
+      background: #bd4b43;
+
+      text-align: center;
+      background: -webkit-linear-gradient(to right, rgb(209, 183, 81), rgb(86, 221, 147));
+
+
+      background: linear-gradient(to right, rgb(150, 175, 69), rgb(239, 93, 67))
+    }
+  </style>
+  <section class="vh-100 gradient-custom ">
+
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-50 col-md-20 col-lg-50 col-xl-25">
+          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+
+              <div class="mb-md-2 mt-md-3 pb-4" ><br>
+                <h2 class="fw-bold mb-2 text-uppercase" style="text-align: center;">Cast Your Vote </h2><br>
+                <div style="text-align: center;">
+                  <div class="form-outline form-white mb-2" >
+                    <label class="form-label" for="form3Example1">Voter Name:&nbsp</label>&nbsp
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <input type="text" name="cand" id="cand" class=" mb-5 mr-sm-2" ><br><br>
+                    <div>
+                      <label for="cars">Choose a Candidate Name:</label>
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      <select id="mname" name="mname" class=" mb-10 mr-sm-5 sm:h-100">
+                        <option value="BJP">--Option--</option>
+                        <option value="BJP">BJP</option>
+                        <option value="Congess">Congess</option>
+                        <option value="XYZ">XYZ</option>
+                        <option value="HP">HP</option>
+                      </select></div><br>
+                    <!-- <label class="form-label" for="form3Example1">Candidate Name:&nbsp</label>&nbsp
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <input type="text" name="mname" id="mname" class=" mb-5 mr-sm-2" ><br><br> -->
+                   
+                    <label class="form-label" for="form3Example1">Account Address:&nbsp</label>&nbsp
+                    
+                    <input type="text" name="accddress" id="accddress" class=" mb-5 mr-sm-2" ><br><br>
+
+                  </div>
+
+                    <!-- <input type="submit" value="Submit" class="btn btn-outline-light btn-lg px-5"><br><br> -->
+                    <input type="button" value="Submit" onclick="voting_system()"
+                    class="btn btn-outline-light px-0" style="color:blue;"><br><br><br>
+                </div>
+
+
+
+                </div>
+
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+  
+
+    
+  </section>
+
+
+  <script>
+
+    async function voting_system() {
+      const account = window.aptos.account();
+      
+        const payload  = {
+            type:"entry_function_payload",
+            function: "0x2707b16a9942a367999eda45b7b568288a293c54108ccdf3bcf78d54b5dcb7f4::votingsys::vote",
+            type_arguments: [],
+            arguments: [
+                //document.getElementById('cand').value,
+                document.getElementById('mname').value,
+                document.getElementById('accddress').value,
+               
+            ]
+    }
+     try {
+            const pendingTransaction = await window.aptos.signAndSubmitTransaction(payload);
+    
+            const client = new window.aptosSDK.AptosClient('https://devnet.aptoslabs.com');
+            const txn = await client.waitForTransactionWithResult(
+                pendingTransaction.hash,
+            );
+            res.sendFile( __dirname + "/" + "proposal.html");
+        } catch (error) {
+            
+        }
+    }
+    
+    
+            </script>
+            <script>
+              async function getAptosWallet() {
+                if ('aptos' in window) {
+                  await window.aptos.connect();
+                } else {
+                  window.open('https://petra.app/', `_blank`);
+                }
+              };
+      
+              async function disAptosWallet() {
+                if ('aptos' in window) {
+                  await window.aptos.disconnect();
+                }
+              };
+            </script>
+           
+  <script>
+
+    async function fetchGraphQL(operationsDoc, operationName, variables) {
+      const result = await fetch(
+        "https://indexer-devnet.staging.gcp.aptosdev.com/v1/graphql",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            query: operationsDoc,
+            variables: variables,
+            operationName: operationName
+          })
+        }
+      );
+
+      return await result.json();
+    }
+
+    const operationsDoc = `
+  query MyQuery {
+    current_table_items(
+      where: {table_handle: {_eq: "0xcbdcd382a4202777ba1d8c66d21310942ef82db270a026c0f538baab8502c448"}}
+    ) {
+      decoded_value
+    }
+  }
+`;
+
+    function fetchMyQuery() {
+      return fetchGraphQL(
+        operationsDoc,
+        "MyQuery",
+        {}
+      );
+    }
+
+    async function startFetchMyQuery() {
+      const { errors, data } = await fetchMyQuery();
+
+      if (errors) {
+        // handle those errors like a pro
+        console.error(errors);
+      }
+
+      // do something great with this precious data
+      console.log(data);
+    }
+
+    startFetchMyQuery();
+  </script>
+</body>
+
+</html>

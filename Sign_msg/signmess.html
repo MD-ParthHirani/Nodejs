@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body style="text-align: center;">
+
+
+
+    <form method="POST" action="http://127.0.0.1:8081/mint">
+        <h1>Sign Message</h1>
+
+        <input type="button" value="connect" onclick="getAptosWallet()">
+        <input type="button" value="disconnect" onclick="disAptosWallet()"><br /><br />
+        Message:<input type="text" id="user[Msg]"><br /><br />
+        Account:<input type="text" id="user[Non]"><br /><br />
+
+        
+
+    </form>
+
+    <input type="button" value="send msg" onclick="signdecode()">
+
+    </table>
+    <script src="https://unpkg.com/aptos@latest/dist/index.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereumjs/browser-builds/dist/ethereumjs-tx/ethereumjs-tx-1.3.3.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/tweetnacl-util@0.15.0/nacl-util.min.js"></script>
+    <script src="./nacl.js"></script>
+
+    <script>
+
+
+        async function signdecode() {
+
+           const message = 'hello';
+           const nonce = 'random_string';
+
+            try {
+                const response = await window.aptos.signMessage({
+                    message:document.getElementById("user[Msg]").value,
+                    nonce: document.getElementById("user[Non]").value,
+                });
+                 const { publicKey } = await window.aptos.account();
+                 console.log(publicKey);
+                // const publicKey = "0x4e05014519e85534ca2ded0a8742074abac1324f033c29798189233e7592c78b";
+                // Remove the 0x prefix
+                const key = publicKey.slice(2, 66);
+                const verified = nacl.sign.detached.verify(
+                    ethereumjs.Buffer.Buffer.from(response.fullMessage),
+                    ethereumjs.Buffer.Buffer.from(response.signature, 'hex'),
+                    ethereumjs.Buffer.Buffer.from(key, 'hex'),
+                );
+                console.log(response.fullMessage);
+                console.log(verified);
+                let message = document.getElementById('message').value;
+                let naclPair = nacl.sign.keyPair();
+                console.log(naclPair.secretKey);
+                let signedMessage = nacl.sign(nacl.util.decodeUTF8(message), naclPair.secretKey);
+                let decrypted = nacl.sign.open(signedMessage,naclPair.publicKey); // is this right? -> Yes
+                console.log(nacl.util.encodeUTF8(decrypted));
+                // console.log(response.signature);
+                // const { publicKey } = await window.aptos.account();
+                //  console.log(publicKey);
+                // // const publicKey = "0x4e05014519e85534ca2ded0a8742074abac1324f033c29798189233e7592c78b";
+            
+                // const key = publicKey.slice(2, 66);
+                // const naclPair = nacl.sign.keyPair()
+                // const signedMessage = nacl.sign(nacl.util.decodeUTF8(response.signature));
+                // const verified = nacl.sign.open(
+                    
+                //     ethereumjs.Buffer.Buffer.from(response.signature,naclPair.publicKey),
+                //    // ethereumjs.Buffer.Buffer.from("0xead6e178f79cd6e876bba2a4c0bd7e46b0922b37bd4652e9bdf3e357d90cd372", 'hex'),
+                //     // ethereumjs.Buffer.Buffer.from(key, 'hex'),
+                // );
+            
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+
+        async function getAptosWallet() {
+            if ('aptos' in window) {
+                await window.aptos.connect();
+            } else {
+                window.open('https://petra.app/', `_blank`);
+            }
+        };
+
+        async function disAptosWallet() {
+            if ('aptos' in window) {
+                await window.aptos.disconnect();
+            }
+        };
+
+
+    </script>
+
+</body>
+
+</html>

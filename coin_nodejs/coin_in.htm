@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form method="GET" action="http://127.0.0.1:8081/get">
+        <input type="submit" name="Coin" value="Coin Info">
+    </form>
+
+    <form method="POST" action="http://127.0.0.1:8081/mint">
+        <h3> Mint Account</h3>
+        Address:</address><input type="text" name="user[address]"><br />
+        Amount:<input type="text" name="user[amount]"><br />
+        <input type="submit" name="Mint" value="Mint">
+    </form>
+
+    <form method="POST" action="http://127.0.0.1:8081/burn">
+        <h3> Burn Account</h3>
+        Amount:<input type="text" name="user[amt]"><br />
+        <input type="submit" name="Burn" value="Burn">
+    </form>
+
+
+    
+
+    <br /><input type="button" onclick="getAptosWallet()" name="connect" value="connect">
+    <h4>Connect wallet</h4>
+
+   
+
+
+    <script>
+        async function getAptosWallet () {
+            if ('aptos' in window) {
+                const res = await window.aptos.connect();
+            } else {
+                window.open('https://petra.app/', `_blank`);
+            }
+        };
+       
+        
+    </script>
+    
+</body>
+</html>
